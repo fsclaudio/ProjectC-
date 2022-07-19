@@ -1,8 +1,8 @@
-﻿namespace GeekShopping.ProductAPI.Data.DTOs
+﻿namespace GeekShopping.web.Models
 {
-    public class ProductDTO
+    public class ProductModel
     {
-      
+        public long Id { get; set; }
         public string Name { get; set; }
 
         public decimal Price { get; set; }

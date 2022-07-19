@@ -33,7 +33,7 @@ namespace GeekShopping.ProductAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<ProductDTO>> Create(ProductDTO dto)
+        public async Task<ActionResult<ProductDTO>> Create([FromBody] ProductDTO dto)
         {
             if (dto == null)
                 return BadRequest();
@@ -41,12 +41,12 @@ namespace GeekShopping.ProductAPI.Controllers
             return Ok(product);
         } 
         
-        [HttpPut]
-        public async Task<ActionResult<ProductDTO>> Update(ProductDTO dto)
+        [HttpPut("{id}")]
+        public async Task<ActionResult<ProductDTO>> Update([FromBody] long id, ProductDTO dto)
         {
             if (dto == null)
                 return BadRequest();
-            var product = await _repository.Update(dto);
+            var product = await _repository.Update(id,dto);
             return Ok(product);
         }
 

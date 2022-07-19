@@ -1,12 +1,19 @@
+using GeekShopping.web.Services;
+using GeekShopping.web.Services.IServices;
+
 namespace GeekShopping.web
 {
     public class Program
     {
+
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
+            //teste de hhtpclient
+         
+            builder.Services.AddHttpClient<IProductService, ProductService>();
             builder.Services.AddControllersWithViews();
 
             var app = builder.Build();

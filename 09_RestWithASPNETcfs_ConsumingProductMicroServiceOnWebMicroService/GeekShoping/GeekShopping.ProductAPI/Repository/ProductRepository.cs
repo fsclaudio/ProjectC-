@@ -38,11 +38,16 @@ namespace GeekShopping.ProductAPI.Repository
             return _mapper.Map<ProductDTO>(product);
         }
 
-        public async Task<ProductDTO> Update(ProductDTO dto)
+        public async Task<ProductDTO> Update(long id,ProductDTO dto)
         {
-            Product product = _mapper.Map<Product>(dto);
-            _context.Products.Update(product);
-            //_context.Products.Find(dto.Id);
+            //Product product = _mapper.Map<Product>(dto);
+            //_context.Products.Update(product);
+            var product = _context.Products.Find(id);
+            product.Name = dto.Name;
+            product.Price = dto.Price;
+            product.Description = dto.Description;
+            product.CategoryName = dto.CategoryName;
+            product.ImageUrl = dto.ImageUrl;
             await _context.SaveChangesAsync();
             return _mapper.Map<ProductDTO>(product);
         }
